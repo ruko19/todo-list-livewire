@@ -1,6 +1,6 @@
 <div>
 
-
+@include('livewire.includes.create-todo-box')
 
     <div id="search-box" class="flex flex-col items-center px-2 my-4 justify-center">
         <div class="flex justify-center items-center">
