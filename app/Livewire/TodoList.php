@@ -13,6 +13,7 @@ class TodoList extends Component
     use WithPagination;
 
     public $name;
+    public $search = '';
 
     public function create()
     {
@@ -30,9 +31,18 @@ class TodoList extends Component
         // message success
         session()->flash('success', 'Created');
     }
+
+
+    // function delete
+    public function delete(Todo $todo)
+    {
+
+        $todo->delete();
+    }
     public function render()
     {
-        $todos = Todo::latest()->paginate(5);
+
+        $todos = Todo::latest()->where('name', 'like', "%{$this->search}%")->paginate(5);
 
         return view('livewire.todo-list', compact('todos'));
     }
